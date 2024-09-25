@@ -13,15 +13,21 @@ import BlogList from './BlogList';
           { title: 'Comando', body: 'Adventure and Actor Movie', author: 'Arnold', id:5}
       ])
 
+      // ===============Delete Blogs===============
+      const handleDelete = (id)=>{
+        const newBlogs = blogs.filter(blog=>blog.id !== id)
+        setBlogs(newBlogs)
+      } 
+
   return (
     <div className='home'>
-      <BlogList blogs = {blogs} title = "All Blogs" />
-       
+      <BlogList blogs = {blogs} title = "All Blogs" handleDelete ={handleDelete}/>
+{/* ====================Output Just Johnm Rambo's Blogs====================== */}
       <BlogList blogs ={blogs.filter((blog)=>{
           if(blog.author === "John Rambo"){
               return true
             }
-      })} title="John Rambo's Blogs"/>
+      })} title="John Rambo's Blogs"handleDelete ={handleDelete}/>
     </div>
   )
 }
