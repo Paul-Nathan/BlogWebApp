@@ -3,8 +3,6 @@ import BlogList from './BlogList';
 import loading from './Hourglass.gif'
 
 
-
-
   const Home = () => {
 
     const{data: blogs, isPending, error} =
