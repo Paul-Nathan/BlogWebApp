@@ -16,7 +16,7 @@ function BlogDetails() {
         {blog && (
             <article>
                 <h2>{blog.title}</h2>
-                <div>{blog.body}</div>
+                <div className='bodyDetails'>{blog.body}</div>
                 <h2>Acted  By: {blog.author}</h2>
             </article>
         )}

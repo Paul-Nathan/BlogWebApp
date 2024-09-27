@@ -106,3 +106,9 @@
   margin-right: auto;
   margin-left: auto;
 }
+.bodyDetails{
+  font-style: italic;
+  border-top: 1px dashed red;
+  border-bottom: 1px dashed red;
+
+}
