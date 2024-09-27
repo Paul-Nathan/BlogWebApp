@@ -1,38 +1,41 @@
 import {useState, useEffect} from 'react';
 import BlogList from './BlogList';
+import loading from './Hourglass.gif'
 
 
 
 
   const Home = () => {
-      const [blogs, setBlogs] = useState([
-          { title: 'First Blood', body: 'Adventure and Action Movie', author: 'John Rambo', id: 1},
-          { title: 'Second blood', body: 'Aventure and Action Movie', author: 'John Rambo', id:2},
-          { title: 'Last Blood', body: 'Adventure and Actor Movie', author: 'John Rambo', id: 3},
-          { title: 'Predator', body: 'Adventure, Actor Movie & Horror Movie', author: 'Arnold', id: 4},
-          { title: 'Comando', body: 'Adventure and Actor Movie', author: 'Arnold', id:5}
-      ])
+      const [blogs, setBlogs] = useState(null)
+      const[isPending, setIsPending] = useState(true)
+      const [error, setError] = useState(null)
 
-      // ===============Delete Blogs===============
-      const handleDelete = (id)=>{
-        const newBlogs = blogs.filter(blog=>blog.id !== id)
-        setBlogs(newBlogs)
-      } 
+      setTimeout(()=>{
 
-      useEffect(() =>{
-        console.log("Use Effect Ran");
-        console.log(blogs)
-      }, [blogs])
+      }, 2000);
+
+      useEffect(()=>{
+        setTimeout(()=>{
+          fetch(' http://localhost:8000/blogs')
+        .then((res)=>{
+          
+          return res.json()
+        })
+        .then((data)=>{
+        console.log(data);
+        setBlogs(data)
+        setIsPending(false)
+
+        })
+        }, 2000);
+  
+        
+      },[])
 
   return (
     <div className='home'>
-      <BlogList blogs = {blogs} title = "All Blogs" handleDelete ={handleDelete}/>
-{/* ====================Output Just Johnm Rambo's Blogs====================== */}
-      <BlogList blogs ={blogs.filter((blog)=>{
-          if(blog.author === "John Rambo"){
-              return true
-            }
-      })} title="John Rambo's Blogs"handleDelete ={handleDelete}/>
+      {isPending && <div><img src={loading} alt='loading spinner'/></div>}
+      {blogs &&<BlogList blogs = {blogs} title = "All Blogs" /> }    
     </div>
   )
 }

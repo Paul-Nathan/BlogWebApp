@@ -1,0 +1,23 @@
+{
+    "blogs": [
+    {
+    "title": "First Blood",
+    "body": "An  adventure & action movie ",
+    "author": "John Rambo",
+    "id": 1
+
+},
+{
+"title": "Second Blood",
+"body": "An Adventure & action movie part 2",
+"author": "John Rambo",
+"id": 2
+},
+{
+    "title": "Last Blood",
+    "body": "An Adventure & action movie part 3",
+    "author": "John Rambo",
+    "id": 3
+    }
+]
+}
